@@ -1,26 +1,112 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050505;
+  --foreground: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-void: #050505;
+  --color-hult-pink: #E0025F;
+  --color-hult-white: #FFFFFF;
+  --color-hult-grey: #1A1A1A;
+  --font-sans: system-ui, sans-serif;
+  --font-display: var(--font-display, 'Oswald', sans-serif);
+  --font-mono: var(--font-mono, 'JetBrains Mono', monospace);
+  --background-image-grid-pattern: linear-gradient(to right, #1A1A1A 1px, transparent 1px), linear-gradient(to bottom, #1A1A1A 1px, transparent 1px);
+  --background-size-grid-pattern: 40px 40px;
+  --color-electric-white: #FFFFFF;
+  --color-dark-grey: #0A0A0A;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #050505;
+    --foreground: #ffffff;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #E0025F;
+}
+
+/* Glitch effect */
+.glitch {
+  position: relative;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #050505;
+}
+.glitch::before {
+  left: 2px;
+  text-shadow: -1px 0 #00ffff;
+  clip: rect(24px, 550px, 90px, 0);
+  animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+.glitch::after {
+  left: -2px;
+  text-shadow: -1px 0 #E0025F;
+  clip: rect(85px, 550px, 140px, 0);
+  animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+@keyframes glitch-anim {
+  0% { clip: rect(10px, 9999px, 31px, 0); }
+  20% { clip: rect(65px, 9999px, 89px, 0); }
+  40% { clip: rect(32px, 9999px, 5px, 0); }
+  60% { clip: rect(93px, 9999px, 60px, 0); }
+  80% { clip: rect(41px, 9999px, 16px, 0); }
+  100% { clip: rect(4px, 9999px, 97px, 0); }
+}
+@keyframes glitch-anim-2 {
+  0% { clip: rect(65px, 9999px, 100px, 0); }
+  20% { clip: rect(12px, 9999px, 3px, 0); }
+  40% { clip: rect(86px, 9999px, 19px, 0); }
+  60% { clip: rect(34px, 9999px, 51px, 0); }
+  80% { clip: rect(5px, 9999px, 68px, 0); }
+  100% { clip: rect(61px, 9999px, 20px, 0); }
+}
+
+/* Journey slow spin */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+/* Team slash clip (optional) */
+.clip-path-slash {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
 }

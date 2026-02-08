@@ -1,0 +1,38 @@
+import { supabase } from '@/lib/supabase';
+import { Database } from '@/lib/database.types';
+
+type Challenge = Database['public']['Tables']['challenges']['Row'];
+type ChallengeInsert = Database['public']['Tables']['challenges']['Insert'];
+type ChallengeUpdate = Database['public']['Tables']['challenges']['Update'];
+
+export const challengeService = {
+  async getAll() {
+    const { data, error } = await supabase.from('challenges').select('*');
+    if (error) throw error;
+    return data;
+  },
+
+  async getById(id: string) {
+    const { data, error } = await supabase.from('challenges').select('*').eq('id', id).single();
+    if (error) throw error;
+    return data;
+  },
+
+  async create(challenge: ChallengeInsert) {
+    const { data, error } = await supabase.from('challenges').insert(challenge).select().single();
+    if (error) throw error;
+    return data;
+  },
+
+  async update(id: string, challenge: ChallengeUpdate) {
+    const { data, error } = await supabase.from('challenges').update(challenge).eq('id', id).select().single();
+    if (error) throw error;
+    return data;
+  },
+
+  async delete(id: string) {
+    const { error } = await supabase.from('challenges').delete().eq('id', id);
+    if (error) throw error;
+    return true;
+  },
+};
