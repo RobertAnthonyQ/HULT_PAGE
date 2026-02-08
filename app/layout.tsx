@@ -21,8 +21,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "HULT PRIZE PUCP // QUANTUM LEAP",
+  title: "Hult Prize PUCP",
   description: "Hult Prize at PUCP - The Nobel Prize for Students. Build profitable startups that solve the planet's most pressing issues.",
+  icons: {
+    icon: "/images/logo.png",
+  },
 };
 
 export default function RootLayout({

@@ -121,7 +121,7 @@ const Intel: React.FC = () => {
         </Card>
 
         {/* 4. THE GLOBE (Span 2) */}
-        <Card delay={0.3} className="col-span-1 md:col-span-2 h-[550px] md:h-auto relative overflow-hidden bg-black">
+        <Card delay={0.3} className="col-span-1 md:col-span-2 h-[480px] md:h-auto relative overflow-hidden bg-black">
             {/* FONDO: Gradiente Radial */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(224,2,95,0.08),rgba(0,0,0,0))]" />
             
@@ -212,9 +212,9 @@ const Intel: React.FC = () => {
                 </div>
             </div>
 
-            {/* EL GLOBO (Optimized positioning) - On mobile, moved up to be behind metrics */}
-            <div className="absolute inset-x-0 -top-20 md:top-auto md:bottom-[-50px] flex justify-center md:inset-0 md:items-center md:translate-y-8">
-                <div className="w-[480px] h-[480px] md:w-[900px] md:h-[900px] opacity-100 cursor-grab active:cursor-grabbing">
+            {/* EL GLOBO (Optimized positioning) - Mobile is centered at top, Desktop is centered with offset */}
+            <div className="absolute inset-x-0 top-0 flex justify-center md:inset-0 md:items-center md:translate-y-24">
+                <div className="w-[460px] h-[460px] md:w-[950px] md:h-[950px] opacity-100 cursor-grab active:cursor-grabbing">
                     <Globe />
                 </div>
             </div>
